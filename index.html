@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .blue-div
+        {
+            background-color: Navy;
+            color:cornsilk;
+            width: 200px;
+        }
+        .red-div
+        {
+            background-color: crimson;
+            color:darkgrey;
+            width: 200px;
+            margin-top: 2%;
+        }
+        body{
+            padding: 5px;
+            background: #F3F6FA;
+            font-size: 1.2em;
+
+        }
+        .target{
+            border: 2px solid #bbb;
+            background-color: rgb(35, 173, 155);
+            padding: 10px;
+            margin: 10px 0;
+
+        }
+       
+        .child{
+            display: block;
+            width: 90px;
+            color: white;
+            font: bold 12px;
+            padding: 5px 10px;
+            background-color: orange;;
+        }
+        .sibling{
+            display: block;
+            width: 90px;
+            font: bold 12px;
+            color:white;
+            padding: 5px 10px;
+            background-color: slategray;
+        }
+        .Highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h2>Jquery adding and removing elements</h2>
+
+    <div class="target">    
+    <p>This div is a target for all sorts of things</p>
+    <p>it dosen't even know what could happen to it</p>
+    </div>
+
+    <div id="img" title="contains img">
+        <img src="img12.jpg" alt=""style="height:300px;width: 400px;">
+    </div>
+
+    <div>
+        <p>this is body 1</p>
+        <p>this is body 2</p>
+        <p>this is body 3</p>
+        <p>this is body 4</p>
+        <p>this is body 5</p>
+    </div>
+
+   
+
+   <div title="Div Title">
+        This is my title 
+    </div>
+
+    <div id="OutputDiv"></div>
+    <div class="blue-div">what's your name </div>
+    <div class="red-div"> my name is bla bla</div>
+    <div id="TableContainerDiv" title="Container Table"></div>
+
+    <form action="">
+        <table style="width: 300px;">
+        <tr>
+            <td style="width:30%;">First Name</td>
+            <td style="width:70%;"><input type="text"id="FirstNameBox" onfocus="Focus(this)" onblur="Blur(this)" value="john"></td>
+
+        </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text"id="LastNameTextBox" onfocus="Focus(this)" onblur="Blur(this)"  ></td>
+            </tr>
+    
+    </table>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+       alert($("#img").html());
+       alert($('p').html());
+       alert($('div[title="Div Title"]').length);
+
+       var output= $('#OutputDiv');
+       var html="";
+       $('div.blue-div,div.red-div').each(function(index){
+         html += "<br/>"+ index + "" +$(this).text();
+       });
+       var output = $('#OutputDiv');
+       output.html(html);
+
+    //    modifying the dom
+    var tcd=$('#TableContainerDiv');
+    tcd.append('<span style="backgroud-color:yellow">Append Child 1 </span>')
+    tcd.prepend('<span style="backgroud-color:green">prepend Child 1 </span>')
+    $('<span style="background-color:green">Append Child 1</span>').appendTo(tcd);
+    $('<span style="background-color:green">prepend Child 1</span>').prependTo(tcd);
+       
+    //    itrating nodes
+
+    $('.target')
+    .append('<div class="child"> Append </div>','<p> Hello!')
+    .prepend('<div class="child"> Prepend </div>')
+    .before('<div class="child"> Before </div>')
+    .after('<div class="child"> after </div>')
+
+    $('p').append('<b>LOTS</b>')
+
+    //  Class function
+     $('input[type="text"]').addClass('Highlight');
+    // function Focus(tb){
+    //     $(tb).toggleClass('Highlight');
+
+    // }
+    // function Blur(tb){
+    //     $(tb).toggleClass('Highlight');
+
+
+    </script>  
+    
+</body>
+</html>
